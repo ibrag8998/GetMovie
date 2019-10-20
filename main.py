@@ -3,6 +3,7 @@ from config import *
 import requests
 
 from os import listdir, getcwd
+from time import sleep
 
 
 def main():
@@ -17,9 +18,10 @@ def main():
 
 
 def auth():
-    if 'TOKEN.txt' in listdir(getcwd()):
-        print("""Program needs a special access token. Here are some instructions how to get it:
-
+    if 'TOKEN.txt' not in listdir(getcwd()):
+        print('Program needs a special access token. Here are some instructions how to get it:')
+        sleep(1)
+        print("""
 1. Go to https://oauth.vk.com/authorize?client_id=7175951&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=offline,wall&response_type=token&v=5.65
 2. Click 'Allow' button
 3. Now look at the address bar. Here you can find 'access_token='.
